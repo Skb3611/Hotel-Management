@@ -686,13 +686,14 @@ export default function App() {
         </Card>
         
         {/* Rooms Table */}
-        <Card className="mb-8">
+        <Card className="mb-6 sm:mb-8">
           <CardHeader>
-            <CardTitle>Room Status</CardTitle>
-            <CardDescription>Overview of all rooms</CardDescription>
+            <CardTitle className="text-lg sm:text-xl">Room Status</CardTitle>
+            <CardDescription className="text-sm">Overview of all rooms</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="rounded-md border">
+            {/* Desktop Table View */}
+            <div className="hidden md:block rounded-md border">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -717,6 +718,24 @@ export default function App() {
                   ))}
                 </TableBody>
               </Table>
+            </div>
+            
+            {/* Mobile Card View */}
+            <div className="md:hidden space-y-3">
+              {rooms.map((room) => (
+                <div key={room.id} className="p-4 border rounded-lg bg-white">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <p className="font-semibold text-lg">Room {room.roomNumber}</p>
+                      <p className="text-sm text-gray-600">{room.roomType}</p>
+                    </div>
+                    <Badge variant={room.status === 'Available' ? 'default' : 'secondary'}>
+                      {room.status}
+                    </Badge>
+                  </div>
+                  <p className="text-sm font-medium text-gray-700">${room.pricePerNight}/night</p>
+                </div>
+              ))}
             </div>
           </CardContent>
         </Card>
