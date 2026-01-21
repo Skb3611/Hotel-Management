@@ -1,16 +1,21 @@
-import './globals.css'
+import { Inter } from 'next/font/google';
+import './globals.css';
+import { Toaster } from 'sonner';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Next.js MongoDB Template',
-  description: 'A simple template with App Router, MongoDB, and shadcn/ui',
-}
+  title: 'Hotel Management System',
+  description: 'Reception Management System',
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         {children}
+        <Toaster position="top-right" richColors />
       </body>
     </html>
-  )
+  );
 }
