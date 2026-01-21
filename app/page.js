@@ -12,7 +12,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
 import { Hotel, LogOut, UserPlus, Calendar, DoorOpen, FileText, Bed, Users } from 'lucide-react';
-import { format } from 'date-fns';
+import { format, isBefore, startOfDay } from 'date-fns';
 
 export default function App() {
   const router = useRouter();
@@ -132,6 +132,17 @@ export default function App() {
   
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    // Validation
+    if (!loginEmail.trim()) {
+      toast.error('Email is required');
+      return;
+    }
+    if (!loginPassword.trim()) {
+      toast.error('Password is required');
+      return;
+    }
+
     setLoginLoading(true);
     
     try {
@@ -170,6 +181,32 @@ export default function App() {
   };
   
   const handleCheckIn = async () => {
+    // Validation
+    if (!checkInData.guestName.trim()) {
+      toast.error('Guest name is required');
+      return;
+    }
+    if (!checkInData.guestPhone.trim()) {
+      toast.error('Phone number is required');
+      return;
+    }
+    if (!/^\d{10,}$/.test(checkInData.guestPhone.replace(/\D/g, ''))) {
+      toast.error('Please enter a valid phone number (at least 10 digits)');
+      return;
+    }
+    if (!checkInData.guestIdProof.trim()) {
+      toast.error('ID Proof is required');
+      return;
+    }
+    if (!checkInData.roomId) {
+      toast.error('Please select a room');
+      return;
+    }
+    if (isNaN(checkInData.stayDuration) || checkInData.stayDuration < 1) {
+      toast.error('Stay duration must be at least 1 night');
+      return;
+    }
+
     try {
       const response = await fetch('/api/checkins', {
         method: 'POST',
@@ -199,6 +236,46 @@ export default function App() {
   };
   
   const handleCreateBooking = async () => {
+    // Validation
+    if (!bookingData.guestName.trim()) {
+      toast.error('Guest name is required');
+      return;
+    }
+    if (!bookingData.guestPhone.trim()) {
+      toast.error('Phone number is required');
+      return;
+    }
+    if (!/^\d{10,}$/.test(bookingData.guestPhone.replace(/\D/g, ''))) {
+      toast.error('Please enter a valid phone number (at least 10 digits)');
+      return;
+    }
+    if (!bookingData.roomType) {
+      toast.error('Please select a room type');
+      return;
+    }
+    if (!bookingData.checkInDate) {
+      toast.error('Check-in date is required');
+      return;
+    }
+    if (!bookingData.checkOutDate) {
+      toast.error('Check-out date is required');
+      return;
+    }
+
+    const today = startOfDay(new Date());
+    const checkIn = startOfDay(new Date(bookingData.checkInDate));
+    const checkOut = startOfDay(new Date(bookingData.checkOutDate));
+
+    if (isBefore(checkIn, today)) {
+      toast.error('Check-in date cannot be in the past');
+      return;
+    }
+
+    if (isBefore(checkOut, checkIn) || checkOut.getTime() === checkIn.getTime()) {
+      toast.error('Check-out date must be after check-in date');
+      return;
+    }
+
     try {
       const response = await fetch('/api/bookings', {
         method: 'POST',
@@ -257,6 +334,16 @@ export default function App() {
   
   const handleConvertBooking = async () => {
     if (!selectedBooking) return;
+
+    // Validation
+    if (!convertData.roomId) {
+      toast.error('Please select a room');
+      return;
+    }
+    if (!convertData.guestIdProof.trim()) {
+      toast.error('ID Proof is required');
+      return;
+    }
     
     try {
       const response = await fetch('/api/bookings/convert', {
