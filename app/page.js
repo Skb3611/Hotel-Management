@@ -390,70 +390,75 @@ export default function App() {
         </div>
       </header>
       
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-4 sm:py-6 lg:py-8">
         {/* Dashboard Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
           <Card>
-            <CardHeader className="pb-3">
-              <CardDescription>Total Rooms</CardDescription>
-              <CardTitle className="text-3xl font-bold">{stats?.totalRooms || 0}</CardTitle>
+            <CardHeader className="pb-2 sm:pb-3">
+              <CardDescription className="text-xs sm:text-sm">Total Rooms</CardDescription>
+              <CardTitle className="text-2xl sm:text-3xl font-bold">{stats?.totalRooms || 0}</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center text-sm text-gray-500">
-                <Bed className="w-4 h-4 mr-1" />
-                All rooms
+              <div className="flex items-center text-xs sm:text-sm text-gray-500">
+                <Bed className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                <span className="hidden sm:inline">All rooms</span>
+                <span className="sm:hidden">Total</span>
               </div>
             </CardContent>
           </Card>
           
           <Card>
-            <CardHeader className="pb-3">
-              <CardDescription>Available</CardDescription>
-              <CardTitle className="text-3xl font-bold text-green-600">{stats?.availableRooms || 0}</CardTitle>
+            <CardHeader className="pb-2 sm:pb-3">
+              <CardDescription className="text-xs sm:text-sm">Available</CardDescription>
+              <CardTitle className="text-2xl sm:text-3xl font-bold text-green-600">{stats?.availableRooms || 0}</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center text-sm text-gray-500">
-                <DoorOpen className="w-4 h-4 mr-1" />
-                Ready to use
+              <div className="flex items-center text-xs sm:text-sm text-gray-500">
+                <DoorOpen className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                <span className="hidden sm:inline">Ready to use</span>
+                <span className="sm:hidden">Free</span>
               </div>
             </CardContent>
           </Card>
           
           <Card>
-            <CardHeader className="pb-3">
-              <CardDescription>Occupied</CardDescription>
-              <CardTitle className="text-3xl font-bold text-blue-600">{stats?.occupiedRooms || 0}</CardTitle>
+            <CardHeader className="pb-2 sm:pb-3">
+              <CardDescription className="text-xs sm:text-sm">Occupied</CardDescription>
+              <CardTitle className="text-2xl sm:text-3xl font-bold text-blue-600">{stats?.occupiedRooms || 0}</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center text-sm text-gray-500">
-                <Users className="w-4 h-4 mr-1" />
-                Currently in use
+              <div className="flex items-center text-xs sm:text-sm text-gray-500">
+                <Users className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                <span className="hidden sm:inline">Currently in use</span>
+                <span className="sm:hidden">In use</span>
               </div>
             </CardContent>
           </Card>
           
           <Card>
-            <CardHeader className="pb-3">
-              <CardDescription>Today's Check-ins</CardDescription>
-              <CardTitle className="text-3xl font-bold text-purple-600">{stats?.todayCheckIns || 0}</CardTitle>
+            <CardHeader className="pb-2 sm:pb-3">
+              <CardDescription className="text-xs sm:text-sm">Today's Check-ins</CardDescription>
+              <CardTitle className="text-2xl sm:text-3xl font-bold text-purple-600">{stats?.todayCheckIns || 0}</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center text-sm text-gray-500">
-                <UserPlus className="w-4 h-4 mr-1" />
-                Arrivals
+              <div className="flex items-center text-xs sm:text-sm text-gray-500">
+                <UserPlus className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                <span className="hidden sm:inline">Arrivals</span>
+                <span className="sm:hidden">In</span>
               </div>
             </CardContent>
           </Card>
           
           <Card>
-            <CardHeader className="pb-3">
-              <CardDescription>Today's Check-outs</CardDescription>
-              <CardTitle className="text-3xl font-bold text-orange-600">{stats?.todayCheckOuts || 0}</CardTitle>
+            <CardHeader className="pb-2 sm:pb-3">
+              <CardDescription className="text-xs sm:text-sm">Today's Check-outs</CardDescription>
+              <CardTitle className="text-2xl sm:text-3xl font-bold text-orange-600">{stats?.todayCheckOuts || 0}</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center text-sm text-gray-500">
-                <LogOut className="w-4 h-4 mr-1" />
-                Departures
+              <div className="flex items-center text-xs sm:text-sm text-gray-500">
+                <LogOut className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                <span className="hidden sm:inline">Departures</span>
+                <span className="sm:hidden">Out</span>
               </div>
             </CardContent>
           </Card>
