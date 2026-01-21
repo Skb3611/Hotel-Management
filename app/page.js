@@ -465,21 +465,21 @@ export default function App() {
         </div>
         
         {/* Quick Actions */}
-        <Card className="mb-8">
+        <Card className="mb-6 sm:mb-8">
           <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-            <CardDescription>Manage your daily reception tasks</CardDescription>
+            <CardTitle className="text-lg sm:text-xl">Quick Actions</CardTitle>
+            <CardDescription className="text-sm">Manage your daily reception tasks</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               <Dialog open={checkInOpen} onOpenChange={setCheckInOpen}>
                 <DialogTrigger asChild>
-                  <Button className="w-full h-auto py-6 flex flex-col items-center space-y-2">
-                    <UserPlus className="w-8 h-8" />
-                    <span className="text-lg">New Check-In</span>
+                  <Button className="w-full h-auto py-4 sm:py-6 flex flex-col items-center space-y-2">
+                    <UserPlus className="w-6 h-6 sm:w-8 sm:h-8" />
+                    <span className="text-base sm:text-lg">New Check-In</span>
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-md">
+                <DialogContent className="max-w-md mx-4 sm:mx-auto max-h-[90vh] overflow-y-auto">
                   <DialogHeader>
                     <DialogTitle>Guest Check-In</DialogTitle>
                     <DialogDescription>Register a new guest and assign a room</DialogDescription>
@@ -542,21 +542,21 @@ export default function App() {
                       </div>
                     )}
                   </div>
-                  <DialogFooter>
-                    <Button variant="outline" onClick={() => setCheckInOpen(false)}>Cancel</Button>
-                    <Button onClick={handleCheckIn}>Check In</Button>
+                  <DialogFooter className="flex-col sm:flex-row gap-2">
+                    <Button variant="outline" onClick={() => setCheckInOpen(false)} className="w-full sm:w-auto">Cancel</Button>
+                    <Button onClick={handleCheckIn} className="w-full sm:w-auto">Check In</Button>
                   </DialogFooter>
                 </DialogContent>
               </Dialog>
               
               <Dialog open={bookingOpen} onOpenChange={setBookingOpen}>
                 <DialogTrigger asChild>
-                  <Button variant="outline" className="w-full h-auto py-6 flex flex-col items-center space-y-2">
-                    <Calendar className="w-8 h-8" />
-                    <span className="text-lg">New Booking</span>
+                  <Button variant="outline" className="w-full h-auto py-4 sm:py-6 flex flex-col items-center space-y-2">
+                    <Calendar className="w-6 h-6 sm:w-8 sm:h-8" />
+                    <span className="text-base sm:text-lg">New Booking</span>
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-md">
+                <DialogContent className="max-w-md mx-4 sm:mx-auto max-h-[90vh] overflow-y-auto">
                   <DialogHeader>
                     <DialogTitle>Create Booking</DialogTitle>
                     <DialogDescription>Book a room for future arrival</DialogDescription>
@@ -619,21 +619,21 @@ export default function App() {
                       />
                     </div>
                   </div>
-                  <DialogFooter>
-                    <Button variant="outline" onClick={() => setBookingOpen(false)}>Cancel</Button>
-                    <Button onClick={handleCreateBooking}>Create Booking</Button>
+                  <DialogFooter className="flex-col sm:flex-row gap-2">
+                    <Button variant="outline" onClick={() => setBookingOpen(false)} className="w-full sm:w-auto">Cancel</Button>
+                    <Button onClick={handleCreateBooking} className="w-full sm:w-auto">Create Booking</Button>
                   </DialogFooter>
                 </DialogContent>
               </Dialog>
               
               <Dialog open={checkoutOpen} onOpenChange={setCheckoutOpen}>
                 <DialogTrigger asChild>
-                  <Button variant="outline" className="w-full h-auto py-6 flex flex-col items-center space-y-2">
-                    <DoorOpen className="w-8 h-8" />
-                    <span className="text-lg">Checkout Guest</span>
+                  <Button variant="outline" className="w-full h-auto py-4 sm:py-6 flex flex-col items-center space-y-2">
+                    <DoorOpen className="w-6 h-6 sm:w-8 sm:h-8" />
+                    <span className="text-base sm:text-lg">Checkout Guest</span>
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-md">
+                <DialogContent className="max-w-md mx-4 sm:mx-auto max-h-[90vh] overflow-y-auto">
                   <DialogHeader>
                     <DialogTitle>Guest Check-Out</DialogTitle>
                     <DialogDescription>Select guest to checkout and generate bill</DialogDescription>
@@ -675,9 +675,9 @@ export default function App() {
                       </div>
                     )}
                   </div>
-                  <DialogFooter>
-                    <Button variant="outline" onClick={() => setCheckoutOpen(false)}>Cancel</Button>
-                    <Button onClick={handleCheckout} disabled={!selectedCheckIn}>Complete Checkout</Button>
+                  <DialogFooter className="flex-col sm:flex-row gap-2">
+                    <Button variant="outline" onClick={() => setCheckoutOpen(false)} className="w-full sm:w-auto">Cancel</Button>
+                    <Button onClick={handleCheckout} disabled={!selectedCheckIn} className="w-full sm:w-auto">Complete Checkout</Button>
                   </DialogFooter>
                 </DialogContent>
               </Dialog>
