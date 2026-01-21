@@ -43,7 +43,7 @@ The `.env` file is already configured with:
 MONGO_URL=mongodb://localhost:27017
 DB_NAME=hotel_management
 JWT_SECRET=hotel-management-secret-key-2025
-NEXT_PUBLIC_BASE_URL=https://lodgeportal.preview.emergentagent.com
+NEXT_PUBLIC_BASE_URL=https://hotel-management-project-hub.vercel.app/
 CORS_ORIGINS=*
 ```
 
@@ -96,17 +96,7 @@ The application will be available at `http://localhost:3000`
 └── package.json
 ```
 
-## 🎨 UI Components Used
 
-- Card
-- Button
-- Input
-- Label
-- Dialog
-- Table
-- Badge
-- Select
-- Toast (Sonner)
 
 ## 🔌 API Endpoints
 
@@ -291,26 +281,9 @@ The application will be available at `http://localhost:3000`
 - Session expiration (24 hours)
 - Protected API routes
 
-## 🚫 Out of Scope (V1)
 
-- Online booking portal
-- Payment processing
-- Admin panel
-- Advanced analytics
-- Multi-hotel support
-- Email notifications
-- Advanced reporting
-- Room cleaning status
-- Housekeeping management
 
-## 📝 Notes
 
-- Database uses MongoDB (not PostgreSQL as initially requested, adapted to environment)
-- Authentication is custom-built with JWT (jose library)
-- All IDs use UUID format for better JSON compatibility
-- Room prices are fixed per room type
-- Bill calculation is automatic based on check-in/check-out dates
-- The system is designed for single-location hotel management
 
 ## 🔧 Development Commands
 
@@ -327,24 +300,3 @@ yarn build
 # Start production server
 yarn start
 ```
-
-## 🐛 Troubleshooting
-
-### Login not working
-1. Make sure MongoDB is running
-2. Run `yarn seed` to create default user
-3. Restart Next.js: `sudo supervisorctl restart nextjs`
-
-### Database connection issues
-1. Check MongoDB is running: `sudo supervisorctl status`
-2. Verify MONGO_URL in `.env`
-3. Check logs: `tail -n 50 /var/log/supervisor/nextjs.out.log`
-
-### Frontend not updating
-1. Clear browser cache
-2. Hard refresh (Ctrl+Shift+R or Cmd+Shift+R)
-3. Check browser console for errors
-
-## 📄 License
-
-This is an MVP project for demonstration purposes.
