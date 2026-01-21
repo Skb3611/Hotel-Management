@@ -741,28 +741,28 @@ export default function App() {
         </Card>
         
         {/* Active Check-Ins and Bookings */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {/* Active Check-Ins */}
           <Card>
             <CardHeader>
-              <CardTitle>Active Check-Ins</CardTitle>
-              <CardDescription>Guests currently staying</CardDescription>
+              <CardTitle className="text-lg sm:text-xl">Active Check-Ins</CardTitle>
+              <CardDescription className="text-sm">Guests currently staying</CardDescription>
             </CardHeader>
             <CardContent>
               {activeCheckIns.length === 0 ? (
-                <p className="text-center text-gray-500 py-8">No active check-ins</p>
+                <p className="text-center text-gray-500 py-8 text-sm">No active check-ins</p>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {activeCheckIns.map((checkIn) => (
-                    <div key={checkIn.id} className="p-4 border rounded-lg">
+                    <div key={checkIn.id} className="p-3 sm:p-4 border rounded-lg">
                       <div className="flex justify-between items-start mb-2">
                         <div>
-                          <p className="font-medium">{checkIn.guestName}</p>
-                          <p className="text-sm text-gray-500">{checkIn.guestPhone}</p>
+                          <p className="font-medium text-sm sm:text-base">{checkIn.guestName}</p>
+                          <p className="text-xs sm:text-sm text-gray-500">{checkIn.guestPhone}</p>
                         </div>
                         <Badge>Room {checkIn.roomNumber}</Badge>
                       </div>
-                      <div className="text-sm space-y-1">
+                      <div className="text-xs sm:text-sm space-y-1">
                         <p className="text-gray-600">
                           <span className="font-medium">Check-in:</span> {format(new Date(checkIn.checkInDate), 'PP')}
                         </p>
@@ -783,24 +783,24 @@ export default function App() {
           {/* Upcoming Bookings */}
           <Card>
             <CardHeader>
-              <CardTitle>Upcoming Bookings</CardTitle>
-              <CardDescription>Future reservations</CardDescription>
+              <CardTitle className="text-lg sm:text-xl">Upcoming Bookings</CardTitle>
+              <CardDescription className="text-sm">Future reservations</CardDescription>
             </CardHeader>
             <CardContent>
               {bookings.length === 0 ? (
-                <p className="text-center text-gray-500 py-8">No upcoming bookings</p>
+                <p className="text-center text-gray-500 py-8 text-sm">No upcoming bookings</p>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {bookings.map((booking) => (
-                    <div key={booking.id} className="p-4 border rounded-lg">
+                    <div key={booking.id} className="p-3 sm:p-4 border rounded-lg">
                       <div className="flex justify-between items-start mb-2">
                         <div>
-                          <p className="font-medium">{booking.guestName}</p>
-                          <p className="text-sm text-gray-500">{booking.guestPhone}</p>
+                          <p className="font-medium text-sm sm:text-base">{booking.guestName}</p>
+                          <p className="text-xs sm:text-sm text-gray-500">{booking.guestPhone}</p>
                         </div>
                         <Badge variant="outline">{booking.roomType}</Badge>
                       </div>
-                      <div className="text-sm space-y-1 mb-3">
+                      <div className="text-xs sm:text-sm space-y-1 mb-3">
                         <p className="text-gray-600">
                           <span className="font-medium">Check-in:</span> {format(new Date(booking.checkInDate), 'PP')}
                         </p>
@@ -816,7 +816,7 @@ export default function App() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="w-full"
+                        className="w-full text-xs sm:text-sm"
                         onClick={() => {
                           setSelectedBooking(booking);
                           setConvertBookingOpen(true);
