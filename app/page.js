@@ -835,14 +835,14 @@ export default function App() {
       
       {/* Convert Booking Dialog */}
       <Dialog open={convertBookingOpen} onOpenChange={setConvertBookingOpen}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-md mx-4 sm:mx-auto max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Convert Booking to Check-In</DialogTitle>
             <DialogDescription>Assign a room and complete guest check-in</DialogDescription>
           </DialogHeader>
           {selectedBooking && (
             <div className="space-y-4">
-              <div className="p-4 bg-gray-50 rounded-lg space-y-2">
+              <div className="p-3 sm:p-4 bg-gray-50 rounded-lg space-y-2 text-sm">
                 <p><span className="font-medium">Guest:</span> {selectedBooking.guestName}</p>
                 <p><span className="font-medium">Phone:</span> {selectedBooking.guestPhone}</p>
                 <p><span className="font-medium">Room Type:</span> {selectedBooking.roomType}</p>
@@ -875,81 +875,81 @@ export default function App() {
               </div>
             </div>
           )}
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setConvertBookingOpen(false)}>Cancel</Button>
-            <Button onClick={handleConvertBooking}>Complete Check-In</Button>
+          <DialogFooter className="flex-col sm:flex-row gap-2">
+            <Button variant="outline" onClick={() => setConvertBookingOpen(false)} className="w-full sm:w-auto">Cancel</Button>
+            <Button onClick={handleConvertBooking} className="w-full sm:w-auto">Complete Check-In</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
       
       {/* Bill Dialog */}
       <Dialog open={billOpen} onOpenChange={setBillOpen}>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-2xl mx-4 sm:mx-auto max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Guest Bill</DialogTitle>
             <DialogDescription>Final bill for checkout</DialogDescription>
           </DialogHeader>
           {bill && (
-            <div className="space-y-6">
-              <div className="text-center border-b pb-4">
-                <h2 className="text-2xl font-bold">Hotel Management</h2>
-                <p className="text-gray-500">Reception System</p>
+            <div className="space-y-4 sm:space-y-6">
+              <div className="text-center border-b pb-3 sm:pb-4">
+                <h2 className="text-xl sm:text-2xl font-bold">Hotel Management</h2>
+                <p className="text-sm text-gray-500">Reception System</p>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <p className="text-sm text-gray-600">Guest Name</p>
-                  <p className="font-medium">{bill.guestName}</p>
+                  <p className="text-xs sm:text-sm text-gray-600">Guest Name</p>
+                  <p className="font-medium text-sm sm:text-base">{bill.guestName}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Phone</p>
-                  <p className="font-medium">{bill.guestPhone}</p>
+                  <p className="text-xs sm:text-sm text-gray-600">Phone</p>
+                  <p className="font-medium text-sm sm:text-base">{bill.guestPhone}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Room Number</p>
-                  <p className="font-medium">{bill.roomNumber}</p>
+                  <p className="text-xs sm:text-sm text-gray-600">Room Number</p>
+                  <p className="font-medium text-sm sm:text-base">{bill.roomNumber}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Room Type</p>
-                  <p className="font-medium">{bill.roomType}</p>
+                  <p className="text-xs sm:text-sm text-gray-600">Room Type</p>
+                  <p className="font-medium text-sm sm:text-base">{bill.roomType}</p>
                 </div>
               </div>
               
-              <div className="border-t border-b py-4 space-y-2">
-                <div className="flex justify-between">
+              <div className="border-t border-b py-3 sm:py-4 space-y-2">
+                <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Check-In Date</span>
-                  <span className="font-medium">{format(new Date(bill.checkInDate), 'PPP')}</span>
+                  <span className="font-medium">{format(new Date(bill.checkInDate), 'PP')}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Check-Out Date</span>
-                  <span className="font-medium">{format(new Date(bill.checkOutDate), 'PPP')}</span>
+                  <span className="font-medium">{format(new Date(bill.checkOutDate), 'PP')}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Nights Stayed</span>
                   <span className="font-medium">{bill.nightsStayed}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Price per Night</span>
                   <span className="font-medium">${bill.pricePerNight}</span>
                 </div>
               </div>
               
-              <div className="bg-blue-50 p-4 rounded-lg">
+              <div className="bg-blue-50 p-3 sm:p-4 rounded-lg">
                 <div className="flex justify-between items-center">
-                  <span className="text-lg font-medium">Total Amount</span>
-                  <span className="text-3xl font-bold text-blue-600">${bill.totalAmount}</span>
+                  <span className="text-base sm:text-lg font-medium">Total Amount</span>
+                  <span className="text-2xl sm:text-3xl font-bold text-blue-600">${bill.totalAmount}</span>
                 </div>
               </div>
               
-              <div className="text-center text-sm text-gray-500">
+              <div className="text-center text-xs sm:text-sm text-gray-500">
                 <p>Thank you for staying with us!</p>
                 <p>Bill generated on {format(new Date(bill.createdAt), 'PPP p')}</p>
               </div>
             </div>
           )}
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setBillOpen(false)}>Close</Button>
-            <Button onClick={printBill}>
+          <DialogFooter className="flex-col sm:flex-row gap-2">
+            <Button variant="outline" onClick={() => setBillOpen(false)} className="w-full sm:w-auto">Close</Button>
+            <Button onClick={printBill} className="w-full sm:w-auto">
               <FileText className="w-4 h-4 mr-2" />
               Print Bill
             </Button>
