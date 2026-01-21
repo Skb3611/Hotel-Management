@@ -312,11 +312,11 @@ export default function App() {
         <Card className="w-full max-w-md shadow-xl">
           <CardHeader className="text-center">
             <div className="flex justify-center mb-4">
-              <div className="bg-blue-600 p-4 rounded-full">
-                <Hotel className="w-12 h-12 text-white" />
+              <div className="bg-blue-600 p-3 sm:p-4 rounded-full">
+                <Hotel className="w-8 h-8 sm:w-12 sm:h-12 text-white" />
               </div>
             </div>
-            <CardTitle className="text-3xl font-bold">Hotel Management</CardTitle>
+            <CardTitle className="text-2xl sm:text-3xl font-bold">Hotel Management</CardTitle>
             <CardDescription>Reception System Login</CardDescription>
           </CardHeader>
           <CardContent>
@@ -348,7 +348,7 @@ export default function App() {
               </Button>
             </form>
             <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-              <p className="text-sm text-gray-600 text-center">
+              <p className="text-xs sm:text-sm text-gray-600 text-center">
                 <strong>Demo Credentials:</strong><br />
                 Email: admin@hotel.com<br />
                 Password: password123
