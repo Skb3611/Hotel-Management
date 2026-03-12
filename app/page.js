@@ -795,7 +795,7 @@ export default function App() {
                     <TableRow key={room.id}>
                       <TableCell className="font-medium">{room.roomNumber}</TableCell>
                       <TableCell>{room.roomType}</TableCell>
-                      <TableCell>${room.pricePerNight}</TableCell>
+                      <TableCell>₹{room.pricePerNight}</TableCell>
                       <TableCell>
                         <Badge variant={room.status === 'Available' ? 'default' : 'secondary'}>
                           {room.status}
