@@ -757,7 +757,7 @@ export default function App() {
                         </div>
                         <div>
                           <p className="text-sm text-gray-600">Estimated Bill</p>
-                          <p className="text-xl font-bold text-blue-600">${selectedCheckIn.estimatedBill}</p>
+                          <p className="text-xl font-bold text-blue-600">₹{selectedCheckIn.estimatedBill}</p>
                         </div>
                       </div>
                     )}
