@@ -44,10 +44,10 @@ async function seed() {
     // Create rooms
     console.log('Creating rooms...');
     const roomTypes = [
-      { type: 'Single', price: 100, count: 5 },
-      { type: 'Double', price: 150, count: 5 },
-      { type: 'Suite', price: 250, count: 3 },
-      { type: 'Deluxe', price: 350, count: 2 },
+      { type: 'Single', price: 8000, count: 5 },
+      { type: 'Double', price: 12000, count: 5 },
+      { type: 'Suite', price: 20000, count: 3 },
+      { type: 'Deluxe', price: 30000, count: 2 },
     ];
     
     let roomNumber = 101;

@@ -56,10 +56,10 @@ yarn seed
 This creates:
 - Default admin user (email: admin@hotel.com, password: password123)
 - 15 rooms:
-  - 5 Single rooms ($100/night)
-  - 5 Double rooms ($150/night)
-  - 3 Suite rooms ($250/night)
-  - 2 Deluxe rooms ($350/night)
+  - 5 Single rooms (₹8000/night)
+  - 5 Double rooms (₹12000/night)
+  - 3 Suite rooms (₹20000/night)
+  - 2 Deluxe rooms (₹30000/night)
 
 ### 4. Start Development Server
 ```bash

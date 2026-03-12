@@ -606,7 +606,7 @@ export default function App() {
                         <SelectContent>
                           {availableRooms.map(room => (
                             <SelectItem key={room.id} value={room.id}>
-                              Room {room.roomNumber} - {room.roomType} (${room.pricePerNight}/night)
+                              Room {room.roomNumber} - {room.roomType} (₹{room.pricePerNight}/night)
                             </SelectItem>
                           ))}
                         </SelectContent>
@@ -625,7 +625,7 @@ export default function App() {
                     {estimatedBill > 0 && (
                       <div className="p-4 bg-blue-50 rounded-lg">
                         <p className="text-sm text-gray-600">Estimated Bill</p>
-                        <p className="text-2xl font-bold text-blue-600">${estimatedBill}</p>
+                        <p className="text-2xl font-bold text-blue-600">₹{estimatedBill}</p>
                       </div>
                     )}
                   </div>
@@ -786,7 +786,7 @@ export default function App() {
                   <TableRow>
                     <TableHead>Room Number</TableHead>
                     <TableHead>Room Type</TableHead>
-                    <TableHead>Price/Night</TableHead>
+                    <TableHead>Price/Night (₹)</TableHead>
                     <TableHead>Status</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -820,7 +820,7 @@ export default function App() {
                       {room.status}
                     </Badge>
                   </div>
-                  <p className="text-sm font-medium text-gray-700">${room.pricePerNight}/night</p>
+                  <p className="text-sm font-medium text-gray-700">₹{room.pricePerNight}/night</p>
                 </div>
               ))}
             </div>
@@ -857,7 +857,7 @@ export default function App() {
                           <span className="font-medium">Expected checkout:</span> {format(new Date(checkIn.checkOutDate), 'PP')}
                         </p>
                         <p className="text-gray-600">
-                          <span className="font-medium">Estimated bill:</span> ${checkIn.estimatedBill}
+                          <span className="font-medium">Estimated bill:</span> ₹{checkIn.estimatedBill}
                         </p>
                       </div>
                     </div>
@@ -945,7 +945,7 @@ export default function App() {
                       .filter(room => room.roomType === selectedBooking.roomType)
                       .map(room => (
                         <SelectItem key={room.id} value={room.id}>
-                          Room {room.roomNumber} - {room.roomType} (${room.pricePerNight}/night)
+                          Room {room.roomNumber} - {room.roomType} (₹{room.pricePerNight}/night)
                         </SelectItem>
                       ))}
                   </SelectContent>
@@ -1017,14 +1017,14 @@ export default function App() {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Price per Night</span>
-                  <span className="font-medium">${bill.pricePerNight}</span>
+                  <span className="font-medium">₹{bill.pricePerNight}</span>
                 </div>
               </div>
               
               <div className="bg-blue-50 p-3 sm:p-4 rounded-lg">
                 <div className="flex justify-between items-center">
                   <span className="text-base sm:text-lg font-medium">Total Amount</span>
-                  <span className="text-2xl sm:text-3xl font-bold text-blue-600">${bill.totalAmount}</span>
+                  <span className="text-2xl sm:text-3xl font-bold text-blue-600">₹{bill.totalAmount}</span>
                 </div>
               </div>
               
